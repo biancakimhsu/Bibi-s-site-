@@ -1,0 +1,28 @@
+,1,2,3,4,5,6,7,8,9,10,11,12,13,14
+,Density (kg/m^3),Young’s modulus (GPa),Yield Strength (Mpa),Tensile Strength (MPa),Elongation (%),Hardness Vickers (HV),Fatigue Strength at 10^7 cycles (MPa),Fracture Toughness (Mpa.m^0-5),Toughness (kJ/m^2),Minimum Service Temperature (ºC),Thermal conductivity (W/m.ºC),Thermal expansion Coefficient (strain/ºC),Thermal Shock Resistance (ºC),Thermal distortion Resistance (MW/m)
+Iridium-commercial purity-hard-min 99%,22600,537,860,1080,10,600,430,120,27.2,-273,148,7,237,20.4
+Nickel-chromium alloy-INCONEL 713L-cast-as cast,8100,190,675,805,12,300,200,94.2,45.6,-273,11.5,11,334,0.956
+Osmium- commercial purity- soft,22600,548,1000,2000,10,300,800,120,26,-273,87.5,6.5,298,12.8
+Platinum-iridium alloy- annealed 25%lr,21700,250,530,770,10,220,305,120,55.9,-273,17,8.6,242,1.84
+Platinum-iridium alloy- annealed 30%lr,21800,270,680,955,8,260,380,120,52.4,-273,15,8.6,291,1.19
+Platinum-iridium alloy- hard 15%lr,21600,215,460,680,2,220,270,120,65.4,-273,30,8.8,240,2.79
+Platinum-iridium alloy- hard 20%lr,21700,235,635,900,2,250,360,120,60,-273,18.5,8.8,304,1.91
+Platinum-iridium alloy- hard 30%lr,17700,225,675,950,3,220,380,120,62.6,-273,42,8.8,333,4.14
+Platinum-iridium alloy- hard 40%lr,16700,245,815,1130,3,260,450,120,57.6,-273,46,8.8,370,4.59
+Rhodium- commercial purity- hard,12500,386,450,1380,2,280,550,120,38.4,-273,150,9,140,16
+Tantalum- commercial purity- R05200- cold worked- >99.7% Ta,16700,175,345,515,1,130,205,90,46.8,-273,58,6.6,291,8.28
+Tantalum-tungsten alloy- FS-61- cold drawn- wire,16900,190,990,1030,3,300,410,120,72.6,-273,55,6.5,813,5.97
+Titanium- alpha-beta alloy- Ti-6Al-2Sn-2Zr-2Mo- triplex aged,4550,118,953,1090,8.47,288,456,69.6,42.6,-273,7.28,9.43,853,0.726
+Titanium- apha-beta alloy- Ti-6Al-4V ELI- annealed,4450,110,944,828,10,325,300,90.9,73.3,-273,6.72,9.1,1020,0.729
+Titanium- apha-beta alloy- Ti-6Al-4V aged,4430,111,924,1040,8,380,613,82,58.9,-273,7.3,9.1,976,0.788
+Titanium- apha-beta alloy- Ti-6Al-4V annealed,4450,110,973,860,10,337,327,84,62.3,-273,7.3,8.56,763,0.788
+Titanium- apha-beta alloy- Ti-6Al-4V cast,4430,113,786,869,8,332,634,104,94.4,-273,8.91,9.1,773,0.967
+Tungsten- commercial purity- R0]004- annealed,19400,339,1350,1670,10,450,665,120,42.2,-273,175,4.35,908,39
+Tungsten-Ni-Cu alloy- ROSM WH9075C,17200,295,525,720,2,310,285,120,48.1,-273,98,5.7,315,16.2
+Tungsten-Ni-Fe alloy- CMW 3000,17100,310,545,770,2,250,380,120,43.2,-273,80,4.9,343,15.2
+Tungsten-Ni-Fe alloy- CMW 3950,18300,344,555,827,15,265,320,120,40.6,-273,86,5.4,291,15
+Tungsten-Ni-Fe alloy- ROSM WH9375F,17700,325,18.5,520,780,300,310,120,42.7,-273,105,4.9,326,17.8
+Tungsten-Ni-Fe alloy- ROSM WH9375F (densament heavy alloy),18200,370,560,900,15,310,320,120,39.1,-273,110,5.6,282,18.4
+Tungsten-Ni-Fe alloy- ROSM WH9766F,18600,365,435,810,5,310,320,120,38.2,-273,126,4.8,251,22.3
+Tungsten-rhenium alloy- W-25Re,19800,369,1150,1310,5,400,520,120,36.1,-196,40,4.6,636,6.66
+Tungsten-rhenium alloy- W-50Re,20200,350,840,1030,5,370,410,120,40.4,-273,40,6,421,5.97

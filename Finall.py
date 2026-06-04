@@ -3,10 +3,10 @@ import numpy as np
 import pandas as pd
 from itertools import combinations
 
-# ── Page config ────────────────────────────────────────────────────────────────
+# Site's name
 st.set_page_config(page_title="Bibi's site 😼 !!!", page_icon="", layout="wide")
 
-# ── PARAMETRIC COLOR PALETTE ───────────────────────────────────────────────────
+# Colors
 COLOR_PRIMARY = "#97BDDA"   # Destaques (botões, medalhas, badges)
 COLOR_BG      = "#2b2d42"   # Fundo geral
 COLOR_TEXT    = "#edf2f4"   # Textos, títulos, labels
@@ -14,14 +14,22 @@ COLOR_SURFACE = "#4366b6"   # Fundo dos cards e inputs
 COLOR_BORDER  = "#4978BF"   # Bordas
 COULEURS_UI   = "#edf2f4"   # Cor da barra de progresso e header
 
-# ── PARAMETRIC FONTS ─────────────────────────────────────────────────────────
+#Fonts
 FONT_TITLE = "Syne"          # Titles, headings, material names
 FONT_MONO  = "Syne"    # Labels, badges, data, buttons
-# To change: replace the font name above with any Google Font
-# Then update the @import URL below with the new font family
 FONT_IMPORT_URL = "https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
 
-# ── Global CSS ─────────────────────────────────────────────────────────────────
+# Font sizes
+FS_XS    = "10px"   # Step labels, pair labels, sensitivity header labels
+FS_SM    = "11px"   # Secondary info, metric labels, bar chart values
+FS_BASE  = "12px"   # Buttons, widget labels, badges, dot labels, general body
+FS_MD    = "13px"   # Input text, score values
+FS_LG    = "15px"   # Pair names
+FS_XL    = "18px"   # Silver/bronze podium medal emoji
+FS_2XL   = "24px"   # Gold podium medal emoji
+FS_TITLE = "clamp(26px,3.5vw,48px)"  # Page h1 headings
+
+# Global CSS
 st.markdown(f"""
 <style>
 @import url('{FONT_IMPORT_URL}');
@@ -43,7 +51,7 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"], .main {{
     background: {COLOR_PRIMARY};
     color: {COLOR_BG};
     border: none; border-radius: 2px;
-    font-family: '{FONT_MONO}', monospace; font-weight: 700; font-size: 12px;
+    font-family: '{FONT_MONO}', monospace; font-weight: 700; font-size: {FS_BASE};
     padding: 11px 24px; letter-spacing: .06em; text-transform: uppercase;
     width: 100%; cursor: pointer; transition: background .15s, transform .1s;
 }}
@@ -53,7 +61,7 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"], .main {{
 /* Labels */
 .stSelectbox label, .stNumberInput label, .stTextInput label,
 .stMultiSelect label, .stRadio label, .stSlider label {{
-    font-family: '{FONT_MONO}', monospace !important; font-size: 12px !important;
+    font-family: '{FONT_MONO}', monospace !important; font-size: {FS_BASE} !important;
     color: {COLOR_TEXT} !important; text-transform: uppercase; letter-spacing: .08em;
 }}
 
@@ -63,7 +71,7 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"], .main {{
     background: {COLOR_SURFACE} !important;
     border: 1px solid {COLOR_BORDER} !important;
     color: {COLOR_BG} !important; border-radius: 2px !important;
-    font-family: '{FONT_MONO}', monospace !important; font-size: 13px !important;
+    font-family: '{FONT_MONO}', monospace !important; font-size: {FS_MD} !important;
 }}
 
 /* Multiselect */
@@ -73,7 +81,7 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"], .main {{
     border-radius: 2px !important;
 }}
 [data-baseweb="tag"] {{ background: {COLOR_BG} !important; border: 1px solid {COLOR_PRIMARY}44 !important; }}
-[data-baseweb="tag"] span {{ color: {COLOR_PRIMARY} !important; font-family: '{FONT_MONO}', monospace !important; font-size: 12px !important; }}
+[data-baseweb="tag"] span {{ color: {COLOR_PRIMARY} !important; font-family: '{FONT_MONO}', monospace !important; font-size: {FS_BASE} !important; }}
 
 /* Dataframe */
 [data-testid="stDataFrame"] {{ border: 1px solid {COLOR_BORDER}; border-radius: 3px; }}
@@ -90,7 +98,7 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"], .main {{
 
 /* Metrics */
 [data-testid="stMetricValue"] {{ font-family: '{FONT_TITLE}', sans-serif !important; font-weight: 800 !important; color: {COLOR_PRIMARY} !important; }}
-[data-testid="stMetricLabel"] {{ font-family: '{FONT_MONO}', monospace !important; font-size: 12px !important; color: {COLOR_TEXT} !important; }}
+[data-testid="stMetricLabel"] {{ font-family: '{FONT_MONO}', monospace !important; font-size: {FS_BASE} !important; color: {COLOR_TEXT} !important; }}
 
 /* Slider — styled, no tick labels */
 div[data-testid="stSlider"] {{ margin-top: 8px !important; }}
@@ -126,13 +134,13 @@ div[data-testid="stSlider"] > div > div > div ~ div {{
     background: {COLOR_BORDER}; border: 1px solid {COLOR_BORDER};
     border-radius: 4px; padding: 20px 24px; margin-bottom: 14px;
 }}
-.pair-label {{ font-family: '{FONT_MONO}', monospace; font-size: 10px; color: {COLOR_TEXT};
+.pair-label {{ font-family: '{FONT_MONO}', monospace; font-size: {FS_XS}; color: {COLOR_TEXT};
                text-transform: uppercase; letter-spacing: .12em; margin-bottom: 10px; }}
 .pair-names {{ display: flex; justify-content: space-between; margin-bottom: 16px; }}
-.pair-name  {{ font-family: '{FONT_TITLE}', sans-serif; font-weight: 700; font-size: 15px; color: {COLOR_PRIMARY};
+.pair-name  {{ font-family: '{FONT_TITLE}', sans-serif; font-weight: 700; font-size: {FS_LG}; color: {COLOR_PRIMARY};
                max-width: 44%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }}
-.pair-vs    {{ font-family: '{FONT_MONO}', monospace; font-size: 12px; color: {COLOR_TEXT}; align-self: center; }}
-.val-badge  {{ font-family: '{FONT_MONO}', monospace; font-size: 12px; font-weight: 700;
+.pair-vs    {{ font-family: '{FONT_MONO}', monospace; font-size: {FS_BASE}; color: {COLOR_TEXT}; align-self: center; }}
+.val-badge  {{ font-family: '{FONT_MONO}', monospace; font-size: {FS_BASE}; font-weight: 700;
                color: {COLOR_PRIMARY}; text-align: center; margin-top: 10px; min-height: 18px; }}
 
 /* Dots */
@@ -141,7 +149,7 @@ div[data-testid="stSlider"] > div > div > div ~ div {{
     width: 24px; height: 24px; border-radius: 50%; cursor: pointer;
     transition: transform .15s, background .15s;
     display: flex; align-items: center; justify-content: center;
-    font-family: '{FONT_MONO}', monospace; font-size: 12px; font-weight: 700;
+    font-family: '{FONT_MONO}', monospace; font-size: {FS_BASE}; font-weight: 700;
     color: {COLOR_BG}; flex-shrink: 0;
 }}
 .dot:hover {{ transform: scale(1.3); }}
@@ -153,7 +161,7 @@ div[data-testid="stSlider"] > div > div > div ~ div {{
 .dot-right.active {{ background: {COLOR_PRIMARY}; }}
 .dot-label-row {{
     display: flex; justify-content: space-between;
-    font-family: '{FONT_MONO}', monospace; font-size: 12px;
+    font-family: '{FONT_MONO}', monospace; font-size: {FS_BASE};
     color: {COLOR_TEXT}88; margin-top: 6px; padding: 0 2px;
 }}
 </style>
@@ -162,20 +170,20 @@ div[data-testid="stSlider"] > div > div > div ~ div {{
 # ── Constants ──────────────────────────────────────────────────────────────────
 
 CRITERIA_META = {
-    "Density (kg/m^3)":                             {"type": "cost",    "short": "Density"},
-    "Young's modulus (GPa)":                        {"type": "benefit", "short": "E-Modulus"},
-    "Yield Strength (Mpa)":                         {"type": "benefit", "short": "Yield Str."},
-    "Tensile Strength (MPa)":                       {"type": "benefit", "short": "Tensile Str."},
-    "Elongation (%)":                               {"type": "benefit", "short": "Elongation"},
-    "Hardness Vickers (HV)":                        {"type": "benefit", "short": "Hardness"},
-    "Fatigue Strength at 10^7 cycles (MPa)":        {"type": "benefit", "short": "Fatigue Str."},
-    "Fracture Toughness (Mpa.m^0-5)":              {"type": "benefit", "short": "Fract. Tough."},
-    "Toughness (kJ/m^2)":                          {"type": "benefit", "short": "Toughness"},
-    "Minimum Service Temperature (ºC)":             {"type": "cost",    "short": "Min. Temp."},
-    "Thermal conductivity (W/m.ºC)":               {"type": "cost",    "short": "Therm. Cond."},
-    "Thermal expansion Coefficient (strain/ºC)":   {"type": "cost",    "short": "Therm. Exp."},
-    "Thermal Shock Resistance (ºC)":               {"type": "benefit", "short": "Therm. Shock"},
-    "Thermal distortion Resistance (MW/m)":        {"type": "benefit", "short": "Therm. Dist."},
+    "Density (kg/m^3)":                             {"type": "cost",    "short": "Densidade"},
+    "Young's modulus (GPa)":                        {"type": "benefit", "short": "Módulo de Young"},
+    "Yield Strength (Mpa)":                         {"type": "benefit", "short": "Limite de Escoamento"},
+    "Tensile Strength (MPa)":                       {"type": "benefit", "short": "Resistência a Tração"},
+    "Elongation (%)":                               {"type": "benefit", "short": "Alongamento"},
+    "Hardness Vickers (HV)":                        {"type": "benefit", "short": "Dureza de Vickers"},
+    "Fatigue Strength at 10^7 cycles (MPa)":        {"type": "benefit", "short": "Resistência à Fadiga"},
+    "Fracture Toughness (Mpa.m^0-5)":              {"type": "benefit", "short": "Tenacidade à fratura"},
+    "Toughness (kJ/m^2)":                          {"type": "benefit", "short": "Tenacidade"},
+    "Minimum Service Temperature (ºC)":             {"type": "cost",    "short": "Temperatura de Serviço Mínima"},
+    "Thermal conductivity (W/m.ºC)":               {"type": "cost",    "short": "Condutividade Térmica"},
+    "Thermal expansion Coefficient (strain/ºC)":   {"type": "cost",    "short": "Coeficiente de Expansão Térmica"},
+    "Thermal Shock Resistance (ºC)":               {"type": "benefit", "short": "Resistência a Impacto Térmico"},
+    "Thermal distortion Resistance (MW/m)":        {"type": "benefit", "short": "Resistência a Distorção Térmica"},
 }
 
 RI_TABLE = {1:0,2:0,3:.58,4:.90,5:1.12,6:1.24,7:1.32,8:1.41,9:1.45,
@@ -184,7 +192,7 @@ RI_TABLE = {1:0,2:0,3:.58,4:.90,5:1.12,6:1.24,7:1.32,8:1.41,9:1.45,
 DOT_VALUES = [1/9,1/8,1/7,1/6,1/5,1/4,1/3,1/2,1,2,3,4,5,6,7,8,9]
 DOT_LABELS = ["1/9","1/8","1/7","1/6","1/5","1/4","1/3","1/2","1","2","3","4","5","6","7","8","9"]
 
-# ── Load data ──────────────────────────────────────────────────────────────────
+# Data
 @st.cache_data
 def load_data():
     df = pd.read_csv("materials.csv", header=1, index_col=0)
@@ -206,7 +214,9 @@ def init():
             st.session_state[k] = v
 init()
 
-# ── Math ───────────────────────────────────────────────────────────────────────
+# Math
+
+# AHP
 def compute_ahp(matrix):
     n        = matrix.shape[0]
     norm     = matrix / matrix.sum(axis=0)
@@ -241,11 +251,11 @@ def page_header(step, title, sub=""):
     st.markdown(f"""
     <div style="padding:40px 0 0 0;">
       <div style="border-left:3px solid {COULEURS_UI};padding-left:20px;margin-bottom:28px;">
-        <div style="font-family:'{FONT_MONO}',monospace;font-size:12px;color:{COULEURS_UI};
+        <div style="font-family:'{FONT_MONO}',monospace;font-size:{FS_XS};color:{COULEURS_UI};
                     text-transform:uppercase;letter-spacing:.18em;margin-bottom:6px;">STEP {step} / 5</div>
-        <h1 style="font-size:clamp(26px,3.5vw,48px);font-weight:800;color:{COLOR_TEXT};
+        <h1 style="font-size:{FS_TITLE};font-weight:800;color:{COLOR_TEXT};
                    line-height:1.05;margin:0 0 6px 0;">{title}</h1>
-        <p style="font-family:'{FONT_MONO}',monospace;font-size:12px;color:{COLOR_TEXT}88;margin:0;">{sub}</p>
+        <p style="font-family:'{FONT_MONO}',monospace;font-size:{FS_XS};color:{COLOR_TEXT}88;margin:0;">{sub}</p>
       </div>
     </div>""", unsafe_allow_html=True)
 
@@ -274,9 +284,9 @@ def rating_dots(pair_idx, name_a, name_b):
     if ratio == 1:
         val_text = "Equal importance (1)"
     elif ratio > 1:
-        val_text = f"{name_a} is {label}× more important than {name_b}"
+        val_text = f"{name_b} is {label}× more important than {name_a}"
     else:
-        val_text = f"{name_b} is {DOT_LABELS[16-val]}× more important than {name_a}"
+        val_text = f"{name_a} is {DOT_LABELS[16-val]}× more important than {name_b}"
 
     # Build dots HTML — purely visual, click handled by hidden slider below
     dots_html = ""
@@ -301,9 +311,9 @@ def rating_dots(pair_idx, name_a, name_b):
       </div>
       <div class="dots-container">{dots_html}</div>
       <div class="dot-label-row">
-        <span>← {name_b} more important</span>
+        <span>← {name_a} more important</span>
         <span>Equal</span>
-        <span>{name_a} more important →</span>
+        <span>{name_b} more important →</span>
       </div>
       <div class="val-badge">{val_text}</div>
     </div>""", unsafe_allow_html=True)
@@ -325,8 +335,8 @@ def step1():
     st.markdown(f"""
     <div style="background:{COLOR_SURFACE}22;border:1px solid {COLOR_BORDER}44;border-radius:4px;
                 padding:14px 20px;margin-bottom:20px;">
-      <span style="font-family:'{FONT_MONO}',monospace;font-size:12px;color:{COLOR_TEXT}88;">Base de dados · </span>
-      <span style="font-family:'{FONT_MONO}',monospace;font-size:12px;color:{COLOR_PRIMARY};">
+      <span style="font-family:'{FONT_MONO}',monospace;font-size:{FS_BASE};color:{COLOR_TEXT}88;">Base de dados · </span>
+      <span style="font-family:'{FONT_MONO}',monospace;font-size:{FS_BASE};color:{COLOR_PRIMARY};">
         {len(ALL_MATERIALS)} materiais · {len(ALL_CRITERIA)} propriedades disponíveis
       </span>
     </div>""", unsafe_allow_html=True)
@@ -342,7 +352,7 @@ def step1():
     n = len(selected)
     if n > 0:
         st.markdown(f"""
-        <div style="font-family:'{FONT_MONO}',monospace;font-size:12px;color:{COLOR_PRIMARY};margin:12px 0;">
+        <div style="font-family:'{FONT_MONO}',monospace;font-size:{FS_BASE};color:{COLOR_PRIMARY};margin:12px 0;">
           {n} criteria selected → {n*(n-1)//2} pairwise comparisons
         </div>""", unsafe_allow_html=True)
 
@@ -376,8 +386,8 @@ def step2():
         sa = CRITERIA_META[crits[i]]["short"]
         sb = CRITERIA_META[crits[j]]["short"]
         dot_idx       = rating_dots(idx, sa, sb)
-        matrix[i, j]  = DOT_VALUES[dot_idx]
-        matrix[j, i]  = 1.0 / DOT_VALUES[dot_idx]
+        matrix[i, j]  = 1.0 / DOT_VALUES[dot_idx]
+        matrix[j, i]  = DOT_VALUES[dot_idx]
     st.session_state.ahp_matrix = matrix
 
     st.markdown("<br>", unsafe_allow_html=True)
@@ -423,8 +433,8 @@ def step3():
     <div style="background:{'#0c1a0c' if consistent else '#1a0e0c'};
                 border:1px solid {'#2a4a2a' if consistent else '#4a2a1e'};
                 border-radius:3px;padding:12px 18px;margin:8px 0 20px 0;">
-      <span style="font-family:'{FONT_MONO}',monospace;font-size:12px;color:{cr_color};">{cr_status}</span>
-      {"<span style='font-family:{FONT_MONO},monospace;font-size:11px;color:#aaa;margin-left:16px;'>CR must be ≤ 0.10 for coherent judgments.</span>" if not consistent else ""}
+      <span style="font-family:'{FONT_MONO}',monospace;font-size:{FS_BASE};color:{cr_color};">{cr_status}</span>
+      {"<span style='font-family:{FONT_MONO},monospace;font-size:{FS_SM};color:#aaa;margin-left:16px;'>CR must be ≤ 0.10 for coherent judgments.</span>" if not consistent else ""}
     </div>""", unsafe_allow_html=True)
 
     with st.expander("ℹ️ What does the eigenvalue tell us?"):
@@ -515,11 +525,11 @@ def step4():
             st.markdown(f"""
             <div style="background:{COLOR_SURFACE}33;border:1px solid {COLOR_PRIMARY if pos==0 else COLOR_BORDER+'44'};
                         border-radius:4px;padding:16px 12px;text-align:center;">
-              <div style="font-size:{'24px' if pos==0 else '18px'};margin-bottom:8px;">{medals[pos]}</div>
-              <div style="font-family:'{FONT_TITLE}',sans-serif;font-weight:700;font-size:12px;
+              <div style="font-size:{FS_2XL if pos==0 else FS_XL};margin-bottom:8px;">{medals[pos]}</div>
+              <div style="font-family:'{FONT_TITLE}',sans-serif;font-weight:700;font-size:{FS_BASE};
                           color:{COLOR_PRIMARY if pos==0 else COLOR_TEXT};word-break:break-word;
                           line-height:1.3;margin-bottom:8px;">{mats[idx]}</div>
-              <div style="font-family:'{FONT_MONO}',monospace;font-size:13px;font-weight:700;
+              <div style="font-family:'{FONT_MONO}',monospace;font-size:{FS_MD};font-weight:700;
                           color:{COLOR_PRIMARY};">{scores[idx]:.4f}</div>
               <div style="background:{COLOR_BG};border-radius:2px;height:3px;margin-top:8px;">
                 <div style="background:{COLOR_PRIMARY};height:3px;width:{pct:.0f}%;border-radius:2px;"></div>
@@ -605,7 +615,7 @@ def render_sensitivity_result(label, win_counts, mats, n_sim, color):
     st.markdown(f"""
     <div style="background:{color}18; border:1px solid {color}44;
                 border-radius:6px; padding:16px 20px; margin-bottom:8px;">
-      <div style="font-family:'{FONT_MONO}',monospace;font-size:11px;
+      <div style="font-family:'{FONT_MONO}',monospace;font-size:{FS_SM};
                   color:{color};text-transform:uppercase;letter-spacing:.1em;
                   margin-bottom:14px;">{label}</div>""",
         unsafe_allow_html=True)
@@ -615,9 +625,9 @@ def render_sensitivity_result(label, win_counts, mats, n_sim, color):
         st.markdown(f"""
       <div style="margin-bottom:10px;">
         <div style="display:flex;justify-content:space-between;margin-bottom:3px;">
-          <span style="font-family:'{FONT_TITLE}',sans-serif;font-size:12px;
+          <span style="font-family:'{FONT_TITLE}',sans-serif;font-size:{FS_BASE};
                        color:{COLOR_TEXT};font-weight:600;">{name}</span>
-          <span style="font-family:'{FONT_MONO}',monospace;font-size:11px;
+          <span style="font-family:'{FONT_MONO}',monospace;font-size:{FS_SM};
                        color:{color};font-weight:700;">{pct:.1f}%</span>
         </div>
         <div style="background:{COLOR_BG};border-radius:2px;height:5px;">
@@ -638,11 +648,11 @@ def step5():
     st.markdown(f"""
     <div style="padding:40px 0 0 0;">
       <div style="border-left:3px solid {COULEURS_UI};padding-left:20px;margin-bottom:28px;">
-        <div style="font-family:'{FONT_MONO}',monospace;font-size:10px;color:{COULEURS_UI};
+        <div style="font-family:'{FONT_MONO}',monospace;font-size:{FS_XS};color:{COULEURS_UI};
                     text-transform:uppercase;letter-spacing:.18em;margin-bottom:6px;">STEP 5 / 5</div>
-        <h1 style="font-size:clamp(26px,3.5vw,48px);font-weight:800;color:{COLOR_TEXT};
+        <h1 style="font-size:{FS_TITLE};font-weight:800;color:{COLOR_TEXT};
                    line-height:1.05;margin:0 0 6px 0;">Sensitivity Analysis</h1>
-        <p style="font-family:'{FONT_MONO}',monospace;font-size:12px;color:{COLOR_TEXT}88;margin:0;">
+        <p style="font-family:'{FONT_MONO}',monospace;font-size:{FS_XS};color:{COLOR_TEXT}88;margin:0;">
           Monte Carlo — how robust is your ranking to weight uncertainty?
         </p>
       </div>
@@ -675,7 +685,7 @@ def step5():
         st.markdown(
             f'<div style="background:{COLOR_SURFACE}18;border:1px solid {COLOR_BORDER}44;border-radius:4px;'
             f'padding:10px 16px;margin-bottom:12px;"><span style="font-family:{FONT_MONO},monospace;'
-            f'font-size:10px;color:{COLOR_TEXT}88;"><b>Uniform:</b> no parameters needed — samples any '
+            f'font-size:{FS_XS};color:{COLOR_TEXT}88;"><b>Uniform:</b> no parameters needed — samples any '
             f'valid weight combination across the full simplex.</span></div>',
             unsafe_allow_html=True)
 
@@ -732,7 +742,7 @@ def step5():
 
         st.markdown("### Results")
         st.markdown(f"""
-        <div style="font-family:'{FONT_MONO}',monospace;font-size:11px;
+        <div style="font-family:'{FONT_MONO}',monospace;font-size:{FS_SM};
                     color:{COLOR_TEXT}88;margin-bottom:20px;">
           {n_sim} simulations · {method} · {n_crit} criteria · top 10 winners shown
         </div>""", unsafe_allow_html=True)
